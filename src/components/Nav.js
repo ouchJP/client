@@ -16,13 +16,12 @@ function Nav(props) {
             </a>
             <div className="logo">
                 <ul>
-                    <li><a>transl8 {props.isLoggedIn ? "Hello, " + props.currentUser : <p></p>}</a></li>
+                    <li>transl8 {props.isLoggedIn ? <span class="userNav">Hello, {props.currentUser}</span> : <p></p>}</li>
                 </ul>
             </div>
             <div className="navbar-links">
                 <ul>
-                    <span id="userNav"></span>
-                    <Link to="/" style={{ textDecoration: 'none' }}><li>Home</li></Link>
+                {props.isLoggedIn ? <span ></span> : <Link to="/" style={{ textDecoration: 'none' }}><li>Home</li></Link>}
                     <Link to="/Requests" style={{ textDecoration: 'none' }}><li>Requests</li></Link>
                     <Link to="/Translators" style={{ textDecoration: 'none' }}><li>Translators</li></Link>
                     {props.isLoggedIn ? <>

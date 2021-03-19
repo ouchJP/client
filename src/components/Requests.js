@@ -63,7 +63,7 @@ function Requests() {
                             <th>Title</th>
                             <th>Request By</th>
                             <th>Date</th>
-                            <th></th>
+                            <th id="removeHeader"></th>
                         </thead>
                         <tbody>
                             {

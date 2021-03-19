@@ -88,8 +88,9 @@ i:hover {
   color: #cccdc9;
   }
 
-#userNav {
+.userNav {
   color: #cccdc9;
+  font-size: 0.75rem;
 }
 
 #wrapper {
@@ -269,7 +270,7 @@ tr:hover{
 }
 
 
-@media screen and (max-width:426px) {
+@media screen and (max-width:769px) {
   body {
     background: var(--color-primary);  
     margin: 0;
@@ -452,11 +453,13 @@ tr:hover{
   }
   
   table{
-    width: 100%;
+    table-layout: fixed;
+    width: 100%;   
   }
   
   td, th {
     padding: 8px;
+    word-wrap: break-word;
   }
   
   th{
@@ -466,6 +469,9 @@ tr:hover{
 
   tr {
     font-size: 0.75rem;
+  }
+
+  #removeHeader{
   }
   
   

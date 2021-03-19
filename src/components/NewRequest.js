@@ -10,10 +10,15 @@ function NewRequest() {
     const [User, setRequestUser] = useState("");
     const [Contact, setRequestContact] = useState("");
     const [Link, setRequestURL] = useState("");
-    const [PostDate, setRequestDate] = useState("");
 
-    const writeRequest = (event, Title, User, Link, PostDate, Contact) => {
+    const writeRequest = (event, Title, User, Link, Contact) => {
         var userId = firebase.auth().currentUser.uid;
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var PostDate = dd + '/' + mm + '/' + yyyy;
+
         event.preventDefault();
         firebase.database().ref('requests/' + userId).set({
             author: userId,
@@ -57,11 +62,10 @@ function NewRequest() {
                     Please note: Currently, users can only have one request per account. <br />
                     Posting a new request will overwrite your previous one.</p>
                 </header>
-                <form onSubmit={(event) => { writeRequest(event, Title, User, Link, PostDate, Contact) }} className="form">
+                <form onSubmit={(event) => { writeRequest(event, Title, User, Link, Contact) }} className="form">
                     <input placeholder='Request Title' type='text' required onChange={e => setRequestTitle(e.target.value)} />
                     <input placeholder='Displayed Username' type='text' required onChange={e => setRequestUser(e.target.value)} />
                     <input placeholder='Request URL (nhentai, ehentai, etc.)' type='text' required onChange={e => setRequestURL(e.target.value)} />
-                    <input placeholder='Current Date (YY-MM-DD)' type='text' required onChange={e => setRequestDate(e.target.value)} />
                     <input placeholder='Contact Email' type='email' required onChange={e => setRequestContact(e.target.value)} />
                     <button type="submit" className="frontpagebuttons" id="signup">Submit</button>
                 </form>
