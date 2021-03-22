@@ -4,7 +4,6 @@ import Nav from './Nav';
 import Footer from './Footer';
 import Register from './Register';
 import Login from './Login';
-import Main from './Main';
 import Requests from './Requests';
 import Translators from './Translators';
 import New from './New';
@@ -51,7 +50,6 @@ function App() {
                     <Route path="/" exact component={Home} />
                     {/**<Route path="/Register" exact component={Register} />**/}
                     {/**<Route path="/Login" exact component={Login} />**/}
-                    <Route path="/List" exact component={Main} />
                     <Route path="/Requests" exact component={Requests} />
                     <Route path="/Reset" exact component={Reset} />
                     <Route path="/Translators" exact component={Translators} />

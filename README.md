@@ -1,4 +1,4 @@
-# transl8
+# transl8 [https://transl8-8d95a.web.app/](link)
 
 Transl8 is a website that aims to connect freelance translators with clients. Currently, this is mainly aimed at doujinshi translators.
 People who are looking for translations can post them on the site. Translators can then either pick up the project, or contact the requestor for commissions.

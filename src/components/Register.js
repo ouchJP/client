@@ -37,7 +37,7 @@ function Register() {
           <p>Take the first step.</p>
         </header>
         <form className="form" onSubmit={(event) => { createUserWithEmailAndPasswordHandler(event, Email, Password) }}>
-          <input placeholder='Username' onChange={e => setRegisterUsername(e.target.value)} type='text' required />
+          {/**<input placeholder='Username' onChange={e => setRegisterUsername(e.target.value)} type='text' required />**/}
           <input placeholder='Email' onChange={e => setRegisterEmail(e.target.value)} type='email' required />
           <input placeholder='Password' onChange={e => setRegisterPassword(e.target.value)} type='password' required />
           <button className="frontpagebuttons" id="signup">Register</button><br />
