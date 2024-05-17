@@ -20,38 +20,34 @@ function NewRequest() {
         var PostDate = dd + '/' + mm + '/' + yyyy;
 
         event.preventDefault();
-        firebase.database().ref('requests/' + userId).set({
-            author: userId,
-            requestTitle: Title,
-            requestUser: Contact,
-            requestURL: Link,
-            requestDate: PostDate,
-            contactEmail: Contact
-        });
-        alert("Request submit successful.")
-    }
 
+        // Generate a unique key for the new request
+        var newRequestKey = firebase.database().ref('requests').push().key;
 
-    {/**const writeNewPost = (event, Title, User, Contact) => {
-        var userId = firebase.auth().currentUser.uid;
-        // A post entry.
-        var postData = {
+        // New request data
+        var requestData = {
             author: userId,
             requestTitle: Title,
             requestUser: User,
+            requestURL: Link,
+            requestDate: PostDate,
             contactEmail: Contact
         };
-      
-        // Get a key for a new Post.
-        var newPostKey = firebase.database().ref().child('requests').push().key;
-      
-        // Write the new post's data simultaneously in the posts list and the user's post list.
+
+        // Write the new request data under the unique key
         var updates = {};
-        updates['/requests/' + newPostKey] = postData;
-        updates['/requests/' + userId + '/' + newPostKey] = postData;
-      
-        return firebase.database().ref().update(updates);
-      }**/}
+        updates['/requests/' + newRequestKey] = requestData;
+        updates['/user-requests/' + userId + '/' + newRequestKey] = requestData;
+
+        firebase.database().ref().update(updates)
+            .then(() => {
+                alert("Request submit successful.");
+                window.location.href = '/requests'
+            })
+            .catch((error) => {
+                console.error("Error writing new request: ", error);
+            });
+    }
 
     return (
         <>
@@ -59,8 +55,8 @@ function NewRequest() {
                 <header>
                     <h1>Create New Request</h1>
                     <p>Post a new request listing.<br />
-                    Please note: Currently, users can only have one request per account. <br />
-                    Posting a new request will overwrite your previous one.</p>
+                        Please note: Currently, users can only have one request per account. <br />
+                        Posting a new request will overwrite your previous one.</p>
                 </header>
                 <form onSubmit={(event) => { writeRequest(event, Title, User, Link, Contact) }} className="form">
                     <input placeholder='Request Title' type='text' required onChange={e => setRequestTitle(e.target.value)} />

@@ -29,6 +29,13 @@ nav {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.toggle-button {
+  text-decoration: none;
+  color: var(--color-tertiary);
+  cursor: pointer;
+}
+
+
 .logo {
   display: flex;
   justify-content: flex-start;
